@@ -71,12 +71,47 @@
         console.log("---------------------")
         console.log("PART 1...")
 
-
+        // Model the concept of whether or not its raining in a variable called isRaining
+        let isRaining = true;
+        console.log("isRaining: " + isRaining);
+        // Model the concept of whether or not the user owns an umbrella in a variable called ownsUmbrella
+        let ownsUmbrella = false;
+        console.log("ownsUmbrella: " + ownsUmbrella);
+        // Write an "if" statement to provide instructions to the user depending on the values of these variables
+        if (!isRaining) {
+            console.log("Skies are clear");
+        } else {
+            if (ownsUmbrella) {
+                console.log("Bring your umbrella");
+            } else {
+                console.log("Buy an umbrella");
+            }
+        }
 
 
 
         console.log("---------------------")
         console.log("PART 2...")
+
+        // Write a JavaScript function called advise that encapsulates the logic from Part 1
+        function advise(isRaining, ownsUmbrella) {
+            if (!isRaining) {
+                return "Skies are clear";
+            } else {
+                if (ownsUmbrella) {
+                    return "Bring your umbrella";
+                } else {
+                    return "Buy an umbrella";
+                }
+            }
+        }
+        // Invoke the function four different times using different combinations of boolean values for isRaining and ownsUmbrella
+        console.log(advise(true, true));   // Bring your umbrella
+        console.log(advise(true, false));  // Buy an umbrella
+        console.log(advise(false, true));  // Skies are clear
+        // Log the resulting messages to the console to ensure the program works under all possible scenarios       
+
+
 
 
 
@@ -84,6 +119,28 @@
 
         console.log("---------------------")
         console.log("PART 3...")
+
+        // Get the button and span elements
+        const button = document.getElementById("advise");
+        const displayMessage = document.getElementById("display-message");
+        // Add an event listener to the button
+        button.addEventListener("click", function() {
+            // Get the values of the checkboxes
+            const isRaining = document.getElementById("switch-raining").checked;
+            const ownsUmbrella = document.getElementById("switch-umbrella").checked;
+            // Call the advise function and get the message
+            const message = advise(isRaining, ownsUmbrella);
+            // Display the message in the span element
+            displayMessage.textContent = message;
+        });
+        // Set the initial message
+        displayMessage.textContent = advise(
+            document.getElementById("switch-raining").checked,
+            document.getElementById("switch-umbrella").checked
+        );
+        // Set the initial message
+        // displayMessage.textContent = advise(isRaining, ownsUmbrella);
+        
 
 
 
